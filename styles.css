@@ -1,1 +1,90 @@
+/* 🎨 COLORES DE MARCA */
+:root {
+  --beige: #F5EBDD;
+  --rojo: #C4332A;
+  --texto: #2C2C2C;
+}
+
+/* Estilo general */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--beige);
+  color: var(--texto);
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor del login */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.login-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 380px;
+}
+
+/* Logo */
+.login-logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* Título */
+h1 {
+  margin: 0;
+  color: var(--rojo);
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Botón */
+form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  background-color: var(--rojo);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #a72820;
+}
+
+/* Mensaje */
+.message {
+  margin-top: 10px;
+  font-weight: 500;
+}
 
