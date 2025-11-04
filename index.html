@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TAREAS LPA - Iniciar sesión</title>
+
+  <!-- Colores del manual de marca -->
+  <meta name="theme-color" content="#C4332A" />
+
+  <!-- Manifest (para instalación en móvil) -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <img src="assets/icon.png" alt="Logo LPA" class="login-logo" />
+
+      <h1>TAREAS LPA</h1>
+      <p class="subtitle">Inicia sesión para continuar</p>
+
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Correo electrónico" required />
+        <input type="password" id="password" placeholder="Contraseña" required />
+        <button type="submit">Ingresar</button>
+      </form>
+
+      <p id="loginMessage" class="message"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
 
