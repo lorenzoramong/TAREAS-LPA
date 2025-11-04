@@ -1,1 +1,22 @@
+{
+  "name": "TAREAS LPA",
+  "short_name": "TAREAS LPA",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#F5EBDD",
+  "theme_color": "#C4332A",
+  "description": "Aplicativo interno de gestión de tareas para la Liga de Pádel del Atlántico.",
+  "icons": [
+    {
+      "src": "assets/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
 
