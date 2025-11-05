@@ -1,5 +1,5 @@
 // URL pública del Apps Script (asegurate de que termine en /exec)
-const API_URL = "https://script.google.com/macros/s/AKfycbynfSlgQ_VgkyUVS0YuzeV0hOqcmxdCsaT33JKySfHKqpHU8eaRhN5TYrESrHJnRTA4wg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbw73YxhulO_5kIT_Z7tVZjmPSaQE0HcCEyV4-1K67NASXWBpKy0LQX5iNh9eGl5wi2vJg/exec";
 
 // Manejador del formulario de inicio de sesión
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
