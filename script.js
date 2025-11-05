@@ -1,5 +1,5 @@
 // URL del Apps Script desplegado:
-const API_URL = "https://script.google.com/macros/s/AKfycbxvceyISIu5kt_V7wMgfppHhZ8ECbXmSeM6RLbm-tkkz7u8odEx8wR6NjSn8GqOjuVmHg/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbynfSlgQ_VgkyUVS0YuzeV0hOqcmxdCsaT33JKySfHKqpHU8eaRhN5TYrESrHJnRTA4wg/exec";
 
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
