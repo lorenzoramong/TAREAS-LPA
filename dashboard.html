@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAREAS LPA - Panel</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Librería de gráficos -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dashboard-body">
+  <header class="dashboard-header">
+    <div class="header-left">
+      <img src="assets/icon.png" alt="Logo LPA" class="logo-small" />
+      <h1>TAREAS LPA</h1>
+    </div>
+
+    <div class="header-right">
+      <span id="userName" class="username"></span>
+      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="dashboard-summary">
+      <h2>Resumen general</h2>
+      <canvas id="progressChart" width="200" height="200"></canvas>
+      <div id="summaryStats"></div>
+    </section>
+
+    <section class="dashboard-tareas">
+      <h2>Tus tareas</h2>
+
+      <div class="tareas-grid">
+        <div class="tarea-col">
+          <h3>Asignadas a mí</h3>
+          <div id="listaTareasActivas" class="tarea-list"></div>
+        </div>
+
+        <div class="tarea-col">
+          <h3>Enviadas por mí</h3>
+          <div id="listaTareasEnviadas" class="tarea-list"></div>
+        </div>
+
+        <div class="tarea-col">
+          <h3>Finalizadas</h3>
+          <div id="listaTareasFinalizadas" class="tarea-list"></div>
+        </div>
+
+        <div class="tarea-col">
+          <h3>Pendientes de aprobación</h3>
+          <div id="listaPendientesAprobacion" class="tarea-list"></div>
+        </div>
+
+        <div class="tarea-col">
+          <h3>Por confirmar (enviadas)</h3>
+          <div id="listaTareasPorConfirmar" class="tarea-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="dashboard-footer">
+    <p>© 2025 Liga de Pádel del Atlántico — Caribbean Padel | Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Script del Dashboard -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
 
