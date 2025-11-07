@@ -1,70 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TAREAS LPA</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="dashboard-body">
-  <header class="dashboard-header">
-    <div class="header-left">
-      <img src="assets/icon.png" class="logo-small" alt="Logo LPA" />
-      <h1>TAREAS LPA</h1>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/icon.png" alt="Logo LPA" />
+      <h2>LPA</h2>
     </div>
-    <div>
-      <span id="nombreUsuario" class="username"></span>
-      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
-    </div>
-  </header>
-
-  <main class="dashboard-main">
-    <nav class="tab-menu">
-      <button class="tab active" data-tab="tareas">Mis tareas</button>
-      <button class="tab" data-tab="admin" id="adminTab" style="display:none;">Administración</button>
+    <nav class="sidebar-nav">
+      <button class="nav-btn active" data-section="inicio">🏠 Inicio</button>
+      <button class="nav-btn" data-section="tareas">🧾 Mis tareas</button>
+      <button class="nav-btn admin-only" data-section="admin">⚙️ Administración</button>
+      <button class="nav-btn admin-only" data-section="estadisticas">📊 Estadísticas</button>
     </nav>
+    <div class="sidebar-footer">
+      <span id="nombreUsuario" class="username"></span>
+      <button id="logoutBtn" class="logout-btn">Salir</button>
+    </div>
+  </aside>
 
-    <!-- Sección TAREAS -->
-    <section id="tab-tareas" class="tab-content active">
-      <section class="summary-card">
-        <h2>Resumen general</h2>
-        <canvas id="progressChart" width="180" height="180"></canvas>
-        <div id="summaryStats"></div>
-      </section>
-
-      <section class="tasks-section">
-        <h2>Tus tareas</h2>
-        <div class="tasks-grid">
-          <div class="task-box">
-            <h3>Asignadas a mí</h3>
-            <div id="listaTareasActivas" class="task-list"></div>
-          </div>
-
-          <div class="task-box">
-            <h3>Enviadas por mí</h3>
-            <div id="listaTareasEnviadas" class="task-list"></div>
-          </div>
-
-          <div class="task-box">
-            <h3>Finalizadas</h3>
-            <div id="listaTareasFinalizadas" class="task-list"></div>
-          </div>
-        </div>
-      </section>
+  <main class="main-content">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="section active">
+      <h1>Bienvenido a TAREAS LPA</h1>
+      <p>Resumen de tus actividades y progreso general.</p>
+      <div class="chart-container">
+        <canvas id="personalChart"></canvas>
+      </div>
+      <div id="resumenDatos"></div>
     </section>
 
-    <!-- Sección ADMIN -->
-    <section id="tab-admin" class="tab-content">
-      <h2>Panel de Administración</h2>
+    <!-- Sección Mis tareas -->
+    <section id="tareas" class="section">
+      <h1>Mis tareas</h1>
+      <div class="tasks-grid">
+        <div class="task-box">
+          <h3>Asignadas a mí</h3>
+          <div id="listaTareasActivas" class="task-list"></div>
+        </div>
+        <div class="task-box">
+          <h3>Enviadas por mí</h3>
+          <div id="listaTareasEnviadas" class="task-list"></div>
+        </div>
+        <div class="task-box">
+          <h3>Finalizadas</h3>
+          <div id="listaTareasFinalizadas" class="task-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Administración -->
+    <section id="admin" class="section">
+      <h1>Panel de Administración</h1>
       <div class="admin-grid">
         <div class="admin-card">
           <h3>Agregar usuario</h3>
           <form id="userForm">
-            <input type="text" id="newUser" placeholder="Usuario" required />
-            <input type="password" id="newPassword" placeholder="Contraseña" required />
-            <select id="newRole">
+            <input type="text" id="newUser" placeholder="Usuario" required>
+            <input type="password" id="newPassword" placeholder="Contraseña" required>
+            <select id="newRole" required>
               <option value="usuario">Usuario</option>
               <option value="admin">Admin</option>
               <option value="super_admin">Super Admin</option>
@@ -75,7 +76,7 @@
         </div>
 
         <div class="admin-card">
-          <h3>Usuarios existentes</h3>
+          <h3>Usuarios registrados</h3>
           <ul id="userList" class="user-list"></ul>
         </div>
 
@@ -83,26 +84,27 @@
           <h3>Todas las tareas</h3>
           <div id="allTasks" class="task-list"></div>
         </div>
+      </div>
+    </section>
 
-        <div class="admin-card">
-          <h3>Estado global</h3>
-          <canvas id="globalTasksChart" width="250" height="250"></canvas>
+    <!-- Sección Estadísticas -->
+    <section id="estadisticas" class="section">
+      <h1>Estadísticas Generales</h1>
+      <div class="charts-grid">
+        <div class="chart-box">
+          <h3>Estado global de tareas</h3>
+          <canvas id="globalTasksChart"></canvas>
         </div>
-
-        <div class="admin-card">
-          <h3>Pendientes por usuario</h3>
-          <canvas id="pendingUsersChart" width="250" height="250"></canvas>
+        <div class="chart-box">
+          <h3>Usuarios con más pendientes</h3>
+          <canvas id="pendingUsersChart"></canvas>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="dashboard-footer">
-    © 2025 Liga de Pádel del Atlántico — Caribbean Padel.
-  </footer>
-
-  <script src="js/admin.js"></script>
   <script src="js/dashboard.js"></script>
+  <script src="js/admin.js"></script>
 </body>
 </html>
 
