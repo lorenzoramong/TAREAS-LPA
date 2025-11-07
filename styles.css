@@ -1,270 +1,157 @@
-/* =========================================================
-   ESTILO GENERAL
-   ========================================================= */
-* {
-  box-sizing: border-box;
-}
-
-body {
+/* ============ BASE ============ */
+body, html {
   margin: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: #f0f4fa;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
   color: #333;
-}
-
-/* =========================================================
-   LOGIN PAGE
-   ========================================================= */
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #c4332a 30%, #e25a4c 100%);
+  overflow: hidden;
 }
 
-.login-card {
-  background-color: #fff;
-  padding: 40px 50px;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  width: 350px;
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.login-logo {
-  width: 90px;
-  height: 90px;
-  margin-bottom: 15px;
-}
-
-.login-title {
-  font-size: 1.8rem;
-  color: #c4332a;
-  margin: 5px 0;
-  font-weight: 700;
-}
-
-.login-subtitle {
-  color: #555;
-  margin-bottom: 25px;
-  font-size: 0.95rem;
-}
-
-.login-card input {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.2s;
-}
-
-.login-card input:focus {
-  border-color: #c4332a;
-  box-shadow: 0 0 5px rgba(196, 51, 42, 0.4);
-}
-
-.login-card button {
-  width: 100%;
+/* ============ SIDEBAR ============ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100%;
   background-color: #c4332a;
-  color: #fff;
-  border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.login-card button:hover {
-  background-color: #a92b25;
-}
-
-.login-message {
-  color: #c4332a;
-  font-weight: 600;
-  margin-top: 10px;
-}
-
-/* =========================================================
-   DASHBOARD LPA
-   ========================================================= */
-body.dashboard-body {
-  background-color: #f0f4fa;
-  color: #333;
-}
-
-/* HEADER */
-.dashboard-header {
-  background-color: #c4332a;
-  color: white;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  color: #fff;
 }
 
-.dashboard-header h1 {
-  font-size: 1.6rem;
-  letter-spacing: 0.5px;
-  margin: 0;
-}
-
-.logo-small {
-  height: 52px;
-  width: 52px;
-  border-radius: 10px;
-}
-
-.header-left {
+.sidebar-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.sidebar-logo img {
+  width: 40px;
+  border-radius: 6px;
+}
+
+.sidebar-logo h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  text-align: left;
+  font-size: 1rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-btn:hover, .nav-btn.active {
+  background-color: #a52a22;
+}
+
+.sidebar-footer {
+  border-top: 1px solid #ffffff40;
+  padding-top: 10px;
 }
 
 .username {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-right: 15px;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
 
 .logout-btn {
-  background: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
+  background-color: #fff;
   color: #c4332a;
-  font-weight: 600;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
-
 .logout-btn:hover {
-  background-color: #ffe3e3;
+  background-color: #e4e4e4;
 }
 
-/* MAIN */
-.dashboard-main {
-  padding: 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+/* ============ MAIN CONTENT ============ */
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
 }
 
-/* SUMMARY CARD */
-.summary-card {
-  background-color: white;
-  border-radius: 14px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 25px;
-  text-align: center;
-  margin-bottom: 40px;
+.section {
+  display: none;
 }
-
-.summary-card h2 {
-  color: #c4332a;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-}
-
-/* TASKS */
-.tasks-section h2 {
-  color: #c4332a;
-  margin-bottom: 20px;
-}
-
-.tasks-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.task-box {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-}
-
-.task-box h3 {
-  border-bottom: 2px solid #c4332a;
-  color: #c4332a;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-}
-
-/* TASK ITEMS */
-.task-item {
-  background-color: #f9f9f9;
-  border-left: 5px solid #c4332a;
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-bottom: 10px;
-  transition: 0.2s;
-}
-
-.task-item:hover {
-  background-color: #fff2f2;
-  transform: translateY(-2px);
-}
-
-.task-item h4 {
-  margin: 0;
-  font-size: 1rem;
-  color: #c4332a;
-}
-
-.task-item p {
-  margin: 3px 0 5px 0;
-  font-size: 0.9rem;
-}
-
-.task-item small {
+.section.active {
   display: block;
-  color: #666;
-  font-size: 0.8rem;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
-/* FOOTER */
-.dashboard-footer {
-  background-color: #c4332a;
-  color: white;
-  text-align: center;
-  padding: 14px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ CARDS Y GRIDS ============ */
+.tasks-grid, .admin-grid, .charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.task-box, .admin-card, .chart-box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.task-list {
+  background-color: #fafafa;
+  padding: 10px;
+  border-radius: 6px;
+  min-height: 60px;
   font-size: 0.9rem;
-  margin-top: 40px;
-}
-/* ==================== GRÁFICOS ==================== */
-canvas {
-  width: 100% !important;
-  height: auto !important;
-  margin-top: 15px;
 }
 
-.admin-card h3 {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+button {
+  cursor: pointer;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.chart-container {
+  width: 300px;
+  max-width: 90%;
+  margin-top: 20px;
+}
+
+@media(max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  .main-content {
+    margin-left: 210px;
+  }
 }
 
 
