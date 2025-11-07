@@ -1,90 +1,257 @@
-/* 🎨 COLORES DE MARCA */
-:root {
-  --beige: #F5EBDD;
-  --rojo: #C4332A;
-  --texto: #2C2C2C;
+/* =========================================================
+   ESTILO GENERAL
+   ========================================================= */
+* {
+  box-sizing: border-box;
 }
 
-/* Estilo general */
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--beige);
-  color: var(--texto);
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f4fa;
+  color: #333;
 }
 
-/* Contenedor del login */
+/* =========================================================
+   LOGIN PAGE
+   ========================================================= */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #c4332a 30%, #e25a4c 100%);
 }
 
 .login-card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   text-align: center;
-  width: 90%;
-  max-width: 380px;
+  width: 350px;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Logo */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .login-logo {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 10px;
+  width: 90px;
+  height: 90px;
+  margin-bottom: 15px;
 }
 
-/* Título */
-h1 {
-  margin: 0;
-  color: var(--rojo);
+.login-title {
   font-size: 1.8rem;
+  color: #c4332a;
+  margin: 5px 0;
+  font-weight: 700;
 }
 
-.subtitle {
-  color: #666;
-  margin-bottom: 20px;
+.login-subtitle {
+  color: #555;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
 }
 
-/* Inputs */
-form input {
+.login-card input {
   width: 100%;
-  padding: 10px;
-  margin: 8px 0;
+  padding: 12px 15px;
+  margin-bottom: 14px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
+  outline: none;
+  transition: 0.2s;
 }
 
-/* Botón */
-form button {
+.login-card input:focus {
+  border-color: #c4332a;
+  box-shadow: 0 0 5px rgba(196, 51, 42, 0.4);
+}
+
+.login-card button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  background-color: var(--rojo);
-  color: white;
+  background-color: #c4332a;
+  color: #fff;
   border: none;
+  padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.2s;
 }
 
-form button:hover {
-  background-color: #a72820;
+.login-card button:hover {
+  background-color: #a92b25;
 }
 
-/* Mensaje */
-.message {
+.login-message {
+  color: #c4332a;
+  font-weight: 600;
   margin-top: 10px;
-  font-weight: 500;
 }
+
+/* =========================================================
+   DASHBOARD LPA
+   ========================================================= */
+body.dashboard-body {
+  background-color: #f0f4fa;
+  color: #333;
+}
+
+/* HEADER */
+.dashboard-header {
+  background-color: #c4332a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-header h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.logo-small {
+  height: 52px;
+  width: 52px;
+  border-radius: 10px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.username {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-right: 15px;
+}
+
+.logout-btn {
+  background: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #c4332a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #ffe3e3;
+}
+
+/* MAIN */
+.dashboard-main {
+  padding: 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* SUMMARY CARD */
+.summary-card {
+  background-color: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 25px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.summary-card h2 {
+  color: #c4332a;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+}
+
+/* TASKS */
+.tasks-section h2 {
+  color: #c4332a;
+  margin-bottom: 20px;
+}
+
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.task-box {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-box h3 {
+  border-bottom: 2px solid #c4332a;
+  color: #c4332a;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+/* TASK ITEMS */
+.task-item {
+  background-color: #f9f9f9;
+  border-left: 5px solid #c4332a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  transition: 0.2s;
+}
+
+.task-item:hover {
+  background-color: #fff2f2;
+  transform: translateY(-2px);
+}
+
+.task-item h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #c4332a;
+}
+
+.task-item p {
+  margin: 3px 0 5px 0;
+  font-size: 0.9rem;
+}
+
+.task-item small {
+  display: block;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* FOOTER */
+.dashboard-footer {
+  background-color: #c4332a;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
 
