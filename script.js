@@ -1,57 +1,71 @@
-// URL de tu PROXY público
-const API_URL = "https://script.google.com/macros/s/AKfycbyNuN89FmoLohAwlqhaDulV6tNr6dXhkYEFxTo1iK5I09H-trylUGxHoKS-NqE28eCd/exec";
+/* =========================================================
+   LOGIN DE TAREAS LPA
+   ========================================================= */
 
-document.getElementById("loginForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
+// Obtener formulario
+const loginForm = document.getElementById("loginForm");
+const loginMessage = document.getElementById("loginMessage");
 
-  const usuario = document.getElementById("username").value.trim();
-  const contraseña = document.getElementById("password").value.trim();
-  const message = document.getElementById("loginMessage");
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  message.textContent = "Verificando credenciales...";
-  message.style.color = "gray";
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-  try {
-    const response = await fetch(API_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      redirect: "follow",
-      mode: "cors",
-      body: JSON.stringify({ usuario, contraseña }),
-    });
+    // Obtener lista de usuarios guardados
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    // leemos siempre como texto primero
-    const text = await response.text();
-    console.log("Respuesta cruda del servidor:", text);
+    // Buscar usuario
+    const usuarioEncontrado = usuarios.find(
+      (u) => u.usuario === username && u.contraseña === password
+    );
 
-    let data;
-    try {
-      data = JSON.parse(text);
-    } catch (err) {
-      throw new Error("No se pudo interpretar la respuesta del servidor.");
-    }
+    if (usuarioEncontrado) {
+      // Guardar sesión activa
+      localStorage.setItem("usuario", JSON.stringify(usuarioEncontrado));
 
-    if (data.result === "success") {
-      message.textContent = "Acceso concedido. Redirigiendo...";
-      message.style.color = "green";
+      // Mostrar mensaje y redirigir
+      loginMessage.textContent = "✅ Iniciando sesión...";
+      loginMessage.style.color = "green";
 
-      // Redirección según rol
-      if (data.rol === "super_admin" || data.rol === "admin") {
+      setTimeout(() => {
         window.location.href = "dashboard.html";
-      } else {
-        window.location.href = "tareas.html";
-      }
+      }, 800);
     } else {
-      message.textContent = data.message || "Usuario o contraseña incorrectos.";
-      message.style.color = "red";
+      loginMessage.textContent = "❌ Usuario o contraseña incorrectos.";
+      loginMessage.style.color = "red";
     }
-  } catch (error) {
-    console.error("Error al conectar:", error);
-    message.textContent = "Error al conectar con el servidor.";
-    message.style.color = "red";
-  }
-});
+  });
+}
+
+/* =========================================================
+   CARGAR USUARIOS POR DEFECTO (solo si no hay ninguno)
+   ========================================================= */
+if (!localStorage.getItem("usuarios")) {
+  const usuariosBase = [
+    {
+      usuario: "lorram",
+      contraseña: "1234",
+      rol: "super_admin",
+      nombre: "Lorenzo Ramón"
+    },
+    {
+      usuario: "guillo",
+      contraseña: "5678",
+      rol: "super_admin",
+      nombre: "Guillermo Mendoza"
+    },
+    {
+      usuario: "david",
+      contraseña: "9999",
+      rol: "admin",
+      nombre: "David Manager"
+    }
+  ];
+
+  localStorage.setItem("usuarios", JSON.stringify(usuariosBase));
+  console.log("Usuarios iniciales cargados ✅");
+}
 
 
