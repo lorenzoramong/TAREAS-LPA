@@ -253,5 +253,18 @@ body.dashboard-body {
   font-size: 0.9rem;
   margin-top: 40px;
 }
+/* ==================== GRÁFICOS ==================== */
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  margin-top: 15px;
+}
+
+.admin-card h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
 
 
