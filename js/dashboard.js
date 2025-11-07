@@ -1,83 +1,56 @@
-/* =========================================================
-   DASHBOARD PRINCIPAL - TAREAS LPA
-   ========================================================= */
+// ================== DASHBOARD JS ==================
+document.addEventListener("DOMContentLoaded", () => {
+  const navButtons = document.querySelectorAll(".nav-btn");
+  const sections = document.querySelectorAll(".section");
+  const user = localStorage.getItem("usuarioActivo");
+  const usuario = JSON.parse(user);
+  const nombre = document.getElementById("nombreUsuario");
+  nombre.textContent = usuario?.usuario || "Usuario";
 
-// Verificar si hay sesión activa
-const usuarioActivo = JSON.parse(localStorage.getItem("usuario"));
-if (!usuarioActivo) {
-  window.location.href = "index.html";
-}
-
-// Mostrar nombre del usuario en el header
-document.getElementById("userName").textContent = usuarioActivo.nombre;
-
-// Obtener referencias a las listas
-const listaTareasActivas = document.getElementById("listaTareasActivas");
-const listaTareasEnviadas = document.getElementById("listaTareasEnviadas");
-const listaTareasFinalizadas = document.getElementById("listaTareasFinalizadas");
-const listaPendientesAprobacion = document.getElementById("listaPendientesAprobacion");
-const listaTareasPorConfirmar = document.getElementById("listaTareasPorConfirmar");
-
-// Datos de ejemplo
-let tareas = [
-  {
-    id: 1,
-    titulo: "Actualizar documentos del club",
-    descripcion: "Subir papelería al drive institucional.",
-    asignado: "guillo",
-    creado_por: "david",
-    fecha_limite: "2025-11-15",
-    estado: "Pendiente"
-  },
-  {
-    id: 2,
-    titulo: "Revisión de reportes mensuales",
-    descripcion: "Revisar y aprobar reportes de noviembre.",
-    asignado: "david",
-    creado_por: "guillo",
-    fecha_limite: "2025-11-10",
-    estado: "Finalizada (por confirmar)"
+  // Mostrar opciones admin si aplica
+  if (usuario.rol === "super_admin" || usuario.rol === "admin") {
+    document.querySelectorAll(".admin-only").forEach((el) => (el.style.display = "block"));
   }
-];
 
-// =========================================================
-// Función para renderizar las tareas
-// =========================================================
-function renderTareas() {
-  const tareasAsignadas = tareas.filter(t => t.asignado === usuarioActivo.usuario);
-  const tareasCreadas = tareas.filter(t => t.creado_por === usuarioActivo.usuario);
-  const tareasFinalizadas = tareas.filter(t => t.estado === "Finalizada (aprobada)");
-  const pendientesAprobacion = tareas.filter(t => t.estado === "Pendiente de aprobación");
-  const porConfirmar = tareas.filter(t => t.estado === "Finalizada (por confirmar)" && t.creado_por === usuarioActivo.usuario);
+  // Cambio de pestañas
+  navButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      navButtons.forEach((b) => b.classList.remove("active"));
+      sections.forEach((s) => s.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.section).classList.add("active");
+    });
+  });
 
-  const generarHTML = (arr) =>
-    arr
-      .map(
-        (t) => `
-        <div class="tarea-item">
-          <h4>${t.titulo}</h4>
-          <p>${t.descripcion}</p>
-          <small>Asignado a: <b>${t.asignado}</b> | Fecha límite: ${t.fecha_limite}</small>
-          <small>Estado: <b>${t.estado}</b></small>
-        </div>
-      `
-      )
-      .join("");
+  // Logout
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("usuarioActivo");
+    window.location.href = "index.html";
+  });
 
-  listaTareasActivas.innerHTML = generarHTML(tareasAsignadas);
-  listaTareasEnviadas.innerHTML = generarHTML(tareasCreadas);
-  listaTareasFinalizadas.innerHTML = generarHTML(tareasFinalizadas);
-  listaPendientesAprobacion.innerHTML = generarHTML(pendientesAprobacion);
-  listaTareasPorConfirmar.innerHTML = generarHTML(porConfirmar);
-}
+  // ================== GRÁFICO PERSONAL ==================
+  const ctx = document.getElementById("personalChart");
+  const tareas = JSON.parse(localStorage.getItem("tareas")) || [];
+  const misTareas = tareas.filter((t) => t.asignado === usuario.usuario);
+  const finalizadas = misTareas.filter((t) => t.estado === "finalizada").length;
+  const pendientes = misTareas.filter((t) => t.estado === "pendiente").length;
 
-// Render inicial
-renderTareas();
-
-// =========================================================
-// Logout manual
-// =========================================================
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  localStorage.removeItem("usuario");
-  window.location.href = "index.html";
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: ["Finalizadas", "Pendientes"],
+      datasets: [
+        {
+          data: [finalizadas, pendientes],
+          backgroundColor: ["#4CAF50", "#FFC107"],
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: { position: "bottom" },
+      },
+    },
+  });
 });
+
