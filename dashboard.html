@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TAREAS LPA - Dashboard</title>
+  <title>TAREAS LPA</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -21,13 +21,12 @@
   </header>
 
   <main class="dashboard-main">
-    <!-- NAV TABS -->
     <nav class="tab-menu">
       <button class="tab active" data-tab="tareas">Mis tareas</button>
       <button class="tab" data-tab="admin" id="adminTab" style="display:none;">Administración</button>
     </nav>
 
-    <!-- SECCIÓN DE TAREAS -->
+    <!-- Sección TAREAS -->
     <section id="tab-tareas" class="tab-content active">
       <section class="summary-card">
         <h2>Resumen general</h2>
@@ -42,10 +41,12 @@
             <h3>Asignadas a mí</h3>
             <div id="listaTareasActivas" class="task-list"></div>
           </div>
+
           <div class="task-box">
             <h3>Enviadas por mí</h3>
             <div id="listaTareasEnviadas" class="task-list"></div>
           </div>
+
           <div class="task-box">
             <h3>Finalizadas</h3>
             <div id="listaTareasFinalizadas" class="task-list"></div>
@@ -54,48 +55,42 @@
       </section>
     </section>
 
-    <!-- SECCIÓN ADMIN -->
+    <!-- Sección ADMIN -->
     <section id="tab-admin" class="tab-content">
       <h2>Panel de Administración</h2>
-
       <div class="admin-grid">
-        <!-- Crear usuario -->
         <div class="admin-card">
-          <h3>Agregar nuevo usuario</h3>
+          <h3>Agregar usuario</h3>
           <form id="userForm">
             <input type="text" id="newUser" placeholder="Usuario" required />
             <input type="password" id="newPassword" placeholder="Contraseña" required />
-            <select id="newRole" required>
+            <select id="newRole">
               <option value="usuario">Usuario</option>
               <option value="admin">Admin</option>
               <option value="super_admin">Super Admin</option>
             </select>
-            <button type="submit">Crear usuario</button>
+            <button type="submit">Crear</button>
           </form>
           <p id="userMessage"></p>
         </div>
 
-        <!-- Ver usuarios -->
         <div class="admin-card">
           <h3>Usuarios existentes</h3>
           <ul id="userList" class="user-list"></ul>
         </div>
 
-        <!-- Tareas Globales -->
         <div class="admin-card full-width">
           <h3>Todas las tareas</h3>
           <div id="allTasks" class="task-list"></div>
         </div>
 
-        <!-- GRÁFICO CIRCULAR -->
         <div class="admin-card">
-          <h3>Estado general de tareas</h3>
+          <h3>Estado global</h3>
           <canvas id="globalTasksChart" width="250" height="250"></canvas>
         </div>
 
-        <!-- GRÁFICO USUARIOS PENDIENTES -->
         <div class="admin-card">
-          <h3>Usuarios con más tareas pendientes</h3>
+          <h3>Pendientes por usuario</h3>
           <canvas id="pendingUsersChart" width="250" height="250"></canvas>
         </div>
       </div>
@@ -103,7 +98,7 @@
   </main>
 
   <footer class="dashboard-footer">
-    © 2025 Liga de Pádel del Atlántico — Caribbean Padel | Todos los derechos reservados.
+    © 2025 Liga de Pádel del Atlántico — Caribbean Padel.
   </footer>
 
   <script src="js/admin.js"></script>
