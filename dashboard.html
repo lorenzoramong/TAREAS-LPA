@@ -16,6 +16,7 @@
 </head>
 
 <body class="dashboard-body">
+  <!-- HEADER -->
   <header class="dashboard-header">
     <div class="header-left">
       <img src="assets/icon.png" alt="Logo LPA" class="logo-small" />
@@ -28,51 +29,53 @@
     </div>
   </header>
 
-  <main class="dashboard-container">
-    <section class="dashboard-summary">
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-main">
+    <section class="summary-card">
       <h2>Resumen general</h2>
-      <canvas id="progressChart" width="200" height="200"></canvas>
+      <canvas id="progressChart" width="180" height="180"></canvas>
       <div id="summaryStats"></div>
     </section>
 
-    <section class="dashboard-tareas">
+    <section class="tasks-section">
       <h2>Tus tareas</h2>
-
-      <div class="tareas-grid">
-        <div class="tarea-col">
+      <div class="tasks-grid">
+        <div class="task-box">
           <h3>Asignadas a mí</h3>
-          <div id="listaTareasActivas" class="tarea-list"></div>
+          <div id="listaTareasActivas" class="task-list"></div>
         </div>
 
-        <div class="tarea-col">
+        <div class="task-box">
           <h3>Enviadas por mí</h3>
-          <div id="listaTareasEnviadas" class="tarea-list"></div>
+          <div id="listaTareasEnviadas" class="task-list"></div>
         </div>
 
-        <div class="tarea-col">
+        <div class="task-box">
           <h3>Finalizadas</h3>
-          <div id="listaTareasFinalizadas" class="tarea-list"></div>
+          <div id="listaTareasFinalizadas" class="task-list"></div>
         </div>
 
-        <div class="tarea-col">
+        <div class="task-box">
           <h3>Pendientes de aprobación</h3>
-          <div id="listaPendientesAprobacion" class="tarea-list"></div>
+          <div id="listaPendientesAprobacion" class="task-list"></div>
         </div>
 
-        <div class="tarea-col">
+        <div class="task-box">
           <h3>Por confirmar (enviadas)</h3>
-          <div id="listaTareasPorConfirmar" class="tarea-list"></div>
+          <div id="listaTareasPorConfirmar" class="task-list"></div>
         </div>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="dashboard-footer">
-    <p>© 2025 Liga de Pádel del Atlántico — Caribbean Padel | Todos los derechos reservados.</p>
+    <p>© 2025 Liga de Pádel del Atlántico — <b>Caribbean Padel</b>. Todos los derechos reservados.</p>
   </footer>
 
-  <!-- Script del Dashboard -->
+  <!-- Script -->
   <script src="js/dashboard.js"></script>
 </body>
 </html>
+
 
