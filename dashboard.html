@@ -9,10 +9,11 @@
 </head>
 
 <body class="dashboard-body">
+  <!-- ===== SIDEBAR ===== -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <img src="assets/icon.png" alt="Logo LPA" />
-      <h2>LPA</h2>
+      <h2>TAREAS LPA</h2>
     </div>
     <nav class="sidebar-nav">
       <button class="nav-btn active" data-section="inicio">🏠 Inicio</button>
@@ -22,12 +23,13 @@
     </nav>
     <div class="sidebar-footer">
       <span id="nombreUsuario" class="username"></span>
-      <button id="logoutBtn" class="logout-btn">Salir</button>
+      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
     </div>
   </aside>
 
+  <!-- ===== MAIN CONTENT ===== -->
   <main class="main-content">
-    <!-- Sección Inicio -->
+    <!-- SECCIÓN: INICIO -->
     <section id="inicio" class="section active">
       <h1>Bienvenido a TAREAS LPA</h1>
       <p>Resumen de tus actividades y progreso general.</p>
@@ -37,7 +39,7 @@
       <div id="resumenDatos"></div>
     </section>
 
-    <!-- Sección Mis tareas -->
+    <!-- SECCIÓN: MIS TAREAS -->
     <section id="tareas" class="section">
       <h1>Mis tareas</h1>
       <div class="tasks-grid">
@@ -56,12 +58,12 @@
       </div>
     </section>
 
-    <!-- Sección Administración -->
+    <!-- SECCIÓN: ADMINISTRACIÓN -->
     <section id="admin" class="section">
       <h1>Panel de Administración</h1>
       <div class="admin-grid">
         <div class="admin-card">
-          <h3>Agregar usuario</h3>
+          <h3>Agregar nuevo usuario</h3>
           <form id="userForm">
             <input type="text" id="newUser" placeholder="Usuario" required>
             <input type="password" id="newPassword" placeholder="Contraseña" required>
@@ -70,13 +72,13 @@
               <option value="admin">Admin</option>
               <option value="super_admin">Super Admin</option>
             </select>
-            <button type="submit">Crear</button>
+            <button type="submit">Crear usuario</button>
           </form>
           <p id="userMessage"></p>
         </div>
 
         <div class="admin-card">
-          <h3>Usuarios registrados</h3>
+          <h3>Usuarios existentes</h3>
           <ul id="userList" class="user-list"></ul>
         </div>
 
@@ -87,7 +89,7 @@
       </div>
     </section>
 
-    <!-- Sección Estadísticas -->
+    <!-- SECCIÓN: ESTADÍSTICAS -->
     <section id="estadisticas" class="section">
       <h1>Estadísticas Generales</h1>
       <div class="charts-grid">
@@ -103,10 +105,10 @@
     </section>
   </main>
 
-  <script src="js/dashboard.js"></script>
-  <script src="js/admin.js"></script>
+  <script src="dashboard.js"></script>
 </body>
 </html>
+
 
 
 
